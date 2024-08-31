@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.bundle';
+import MyNavBar from './components/Navbar';
+import PriceComparison from "./pages/PriceComparison";
+import Home from "./pages/Home";
+import SearchResults from "./pages/SearchResults";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{backgroundColor: "#151515"}}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MyNavBar />}>
+            <Route index element={<Home />} />
+            <Route path="comparison" element={<PriceComparison />} />
+            <Route path="searchresults" element={<SearchResults />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
